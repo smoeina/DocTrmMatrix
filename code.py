@@ -2,10 +2,11 @@ import collections
 import glob
 import os
 import numpy as np
+import pandas as pd
 words = set()
 
 for filename in glob.glob('*.txt'):
-    with open(os.path.join(filename), 'r') as f:
+    with open(os.path.join(filename), 'r',encoding="utf8") as f:
         lines = f.readlines()
         for line in lines:
             words_in_line = line.split()
@@ -14,9 +15,11 @@ for filename in glob.glob('*.txt'):
 
 print(words)
 matrix = list()
+filenames = list()
 for filename in glob.glob('*.txt'):
+    filenames.append(filename)
     words_in_this_file = set()
-    with open(os.path.join(filename), 'r') as f:
+    with open(os.path.join(filename), 'r',encoding="utf8") as f:
         lines = f.readlines()
         for line in lines:
             words_in_line = line.split()
@@ -32,5 +35,12 @@ for filename in glob.glob('*.txt'):
 print(matrix)
 print(len(words))
 matrix = np.reshape(matrix,(len(glob.glob('*.txt')),len(words)))
+print(matrix.shape)
+
+matrix = matrix.transpose()
+
 print(matrix)
+
+dataframe = pd.DataFrame(matrix,index=words,columns=filenames)
+print(dataframe)
 
