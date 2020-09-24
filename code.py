@@ -1,4 +1,18 @@
-import collections
+"""
+--  *******************************************************
+--  Information Retrieval Course
+--  Amirkabir University of Technology (Tehran Polytechnic)
+--  Department of Computer Engineering (CE-AUT)
+--  https://ce[dot]aut[dot]ac[dot]ir
+--  Developed by Seyed Moein Ayyoubzadeh
+--  *******************************************************
+--  All Rights reserved (C) 2019-2020
+--  *******************************************************
+--  Additional Comments:
+
+-----------------------------------------------------------
+"""
+
 import glob
 import os
 import numpy as np
@@ -44,3 +58,5 @@ print(matrix)
 dataframe = pd.DataFrame(matrix,index=words,columns=filenames)
 print(dataframe)
 
+query = input("Enter Your Query: ").split("AND")
+print(query)
